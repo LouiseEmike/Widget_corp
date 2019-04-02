@@ -95,7 +95,7 @@
 				</p>
 				<p>Visible: 
 					<input type="radio" name="visible" value="0"<?php 
-					if ($sel_subject['visible'] == 0) { echo " checked"; } 
+					if ($sel_subject['visible'] == 2) { echo " checked"; } 
 					?> /> No
 					&nbsp;
 					<input type="radio" name="visible" value="1"<?php 
