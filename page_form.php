@@ -20,7 +20,7 @@
 	?>
 </select></p>
 <p>Visible: 
-	<input type="radio" name="visible" value="0"<?php 
+	<input type="radio" name="visible" value="2"<?php 
 	if ($sel_page['visible'] == 2) { echo " checked"; } 
 	?> /> No
 	&nbsp;
