@@ -10,9 +10,9 @@
 		</td>
 		<td id="page">
 			<?php if ($sel_page) { ?>
-				<h2><?php echo $sel_page['menu_name']; ?></h2>
+				<h2><?php echo htmlentities($sel_page['menu_name']); ?></h2>
 				<div class="page-content">
-					<?php echo $sel_page['content']; ?>
+					<?php echo strip_tags(nl2br($sel_page['content']), "<b><br><p><a>"); ?>
 				</div>
 			<?php } else { ?>
 				<h2>Welcome to Widget Corp</h2>
