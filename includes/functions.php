@@ -43,12 +43,15 @@
 		return $subject_set;
 	}
 	
-	function get_pages_for_subject($subject_id) {
+	function get_pages_for_subject($subject_id, $public = true) {
 		global $connection;
 		$query = "SELECT * 
-				FROM pages 
-				WHERE subject_id = {$subject_id} 
-				ORDER BY position ASC";
+				FROM pages "; 
+		$query .= "WHERE subject_id = {$subject_id} ";
+		if ($public){
+			$query .= "AND visible = 1 ";
+		}
+		$query .= "ORDER BY position ASC";
 		$page_set = mysql_query($query, $connection);
 		confirm_query($page_set);
 		return $page_set;
@@ -111,7 +114,7 @@
 			if ($subject["id"] == $sel_subject['id']) { $output .= " class=\"selected\""; }
 			$output .= "><a href=\"edit_subject.php?subj=" . urlencode($subject["id"]) . 
 				"\">{$subject["menu_name"]}</a></li>";
-			$page_set = get_pages_for_subject($subject["id"]);
+			$page_set = get_pages_for_subject($subject["id"], $public);
 			$output .= "<ul class=\"pages\">";
 			while ($page = mysql_fetch_array($page_set)) {
 				$output .= "<li";
@@ -134,7 +137,7 @@
 			$output .= "><a href=\"index.php?subj=" . urlencode($subject["id"]) . 
 				"\">{$subject["menu_name"]}</a></li>";
 			if ($subject["id"] == $sel_subject['id']) {	
-				$page_set = get_pages_for_subject($subject["id"]);
+				$page_set = get_pages_for_subject($subject["id"], $public);
 				$output .= "<ul class=\"pages\">";
 				while ($page = mysql_fetch_array($page_set)) {
 					$output .= "<li";
