@@ -1,5 +1,7 @@
+<?php require_once("includes/session.php"); ?>
 <?php require_once("includes/connection.php"); ?>
 <?php require_once("includes/functions.php"); ?>
+<?php confirm_logged_in(); ?>
 <?php
 	$errors = array();
 	
@@ -26,7 +28,7 @@
 	$visible = mysql_prep($_POST['visible']);
 ?>
 <?php
-	//INSERT INTO `subjects` (`id`, `menu_name`, `position`, `visible`) VALUES (NULL, 'frances', '5', '0');
+	
 	$query = "INSERT INTO subjects (
 				menu_name, position, visible
 			) VALUES (
