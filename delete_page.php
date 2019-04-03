@@ -1,5 +1,7 @@
+<?php require_once("includes/session.php"); ?>
 <?php require_once("includes/connection.php"); ?>
 <?php require_once("includes/functions.php"); ?>
+<?php confirm_logged_in(); ?>
 <?php
 	// make sure the subject id sent is an integer
 	if (intval($_GET['page']) == 0) {
